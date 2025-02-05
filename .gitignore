@@ -1,0 +1,10 @@
+build/
+*.o
+*.exe
+*.out
+*.a
+*.so
+*.dSYM/
+
+.idea/
+cmake-build-debug/
