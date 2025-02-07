@@ -6,7 +6,7 @@ using namespace std;
 
 const int SIZE = 5;
 
-int generateRandomNumber(int min, int max) {
+int generateRandomNumber(const int min, const int max) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(min, max);
@@ -30,7 +30,7 @@ void printMatrix(int **matrix) {
     }
 }
 
-void printRightDiagonals(int** matrix) {
+void printRightDiagonals(int **matrix) {
     vector<int> result;
     for (int start = 0; start < SIZE; ++start) {
         int row = 0, col = start;
@@ -40,24 +40,15 @@ void printRightDiagonals(int** matrix) {
             ++col;
         }
     }
-    for (int start = 1; start < SIZE; ++start) {
-        int row = start, col = 0;
-        while (row < SIZE && col < SIZE) {
-            result.push_back(matrix[row][col]);
-            ++row;
-            ++col;
-        }
-    }
 
-    for (const int i : result) {
-        cout << i << " ";
-    }
+    for (const int i: result) cout << i << " ";
+
     cout << endl;
 }
 
-void printLeftDiagonals(int** matrix) {
+void printLeftDiagonals(int **matrix) {
     vector<int> result;
-    for (int start = 0; start < SIZE; ++start) {
+    for (int start = SIZE - 1; start >= 0; --start) {
         int row = 0, col = start;
         while (row < SIZE && col >= 0) {
             result.push_back(matrix[row][col]);
@@ -65,18 +56,9 @@ void printLeftDiagonals(int** matrix) {
             --col;
         }
     }
-    for (int start = 1; start < SIZE; ++start) {
-        int row = start, col = SIZE - 1;
-        while (row < SIZE && col >= 0) {
-            result.push_back(matrix[row][col]);
-            ++row;
-            --col;
-        }
-    }
 
-    for (const int i : result) {
-        cout << i << " ";
-    }
+    for (const int i: result) cout << i << " ";
+
     cout << endl;
 }
 
